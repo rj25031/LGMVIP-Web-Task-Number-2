@@ -72,3 +72,19 @@ img{
     top: 200px;
     text-shadow: 10px 10px 4px #09090980;
 }
+
+
+@media (max-width:767px){
+    .navbar ul{
+        padding-inline-start: 5px;
+    }
+    li{
+        margin: 5px;
+    }
+    #logo{
+        margin: 5px 0px 5px 0px;
+    }
+    #head{
+        font-size: 40px;
+    }
+}

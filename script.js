@@ -1,6 +1,6 @@
 async function getUser(){
     try {
-        let a=[]
+        let a=[];
         for(let i =1 ; i < 3 ; i++){
             let p = await fetch('https://reqres.in/api/users?page='+i);
             let data = await p.json();
@@ -15,26 +15,27 @@ async function getUser(){
 const promise = getUser();
 const button=document.getElementById('btn');
 const parent = document.getElementsByClassName("container")[0];
-const home=document.getElementById('home')
-var click=0
+const home=document.getElementById('home');
+var click=0;
 
 home.addEventListener("click", ()=>{
-    click=0
+    click=0;
     parent.innerHTML=
     `<h1 id="head">
     Welcome To Get User's 
-    </h1>`
-})
+    </h1>`;
+});
 
-button.addEventListener('click',()=>{
+button.addEventListener('click',(e)=>{
+    e.preventDefault();
     addUser(promise,click);
     click++;
-})
+});
 
 function addUser(promise,click){
     promise.then(data=>{
         if(click==0){
-            parent.innerHTML=""
+            parent.innerHTML="";
             const user = data[0].data;
             for(let i = 0;i<user.length;i++){
                let nam=(user[i].first_name+' '+user[i].last_name);    
@@ -65,7 +66,7 @@ function displayUser(avatar,name,mail){
             <img src="${avatar}" alt="img">
             <h3> Name :- ${name}</h3>
             <h4>Email :- ${mail}</h4>
-    `
+    `;
     let div = document.createElement("div");
     div.classList.add("tab");
     div.innerHTML=add;
